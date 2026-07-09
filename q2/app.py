@@ -16,7 +16,8 @@ app.add_middleware(
 
 client = OpenAI(
     base_url="https://aipipe.org/openrouter/v1",
-    api_key=os.environ["AIPIPE_TOKEN"],  # or your token string directly
+    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzU5MjU1OCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDE5NzM1OH0.gMmdM6W_AXtuHpJzoXxSE5xZ34z9Ujfcnu7iWtHZoy0",
+)
 )
 
 class Request(BaseModel):
