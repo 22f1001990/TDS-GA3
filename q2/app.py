@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-
+import os
 from openai import OpenAI
 
 app = FastAPI()
@@ -9,14 +9,14 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 client = OpenAI(
-    base_url="http://localhost:11434/v1",
-    api_key="ollama",
+    base_url="https://aipipe.org/openrouter/v1",
+    api_key=os.environ["AIPIPE_TOKEN"],  # or your token string directly
 )
 
 class Request(BaseModel):
@@ -28,7 +28,7 @@ class Request(BaseModel):
 def answer(req: Request):
 
     response = client.chat.completions.create(
-        model="gemma3:4b",
+        model="openai/gpt-4.1-nano",
         messages=[
             {
                 "role": "user",
