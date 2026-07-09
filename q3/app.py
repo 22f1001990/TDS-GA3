@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from openai import OpenAI
 import json
-
+from dateutil import parser
 app = FastAPI()
 
 app.add_middleware(
@@ -15,29 +15,35 @@ app.add_middleware(
 )
 
 client = OpenAI(
-    base_url="http://localhost:11434/v1",
-    api_key="ollama",
+    base_url="https://aipipe.org/openrouter/v1",
+    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzU5MjU1OCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDE5NzM1OH0.gMmdM6W_AXtuHpJzoXxSE5xZ34z9Ujfcnu7iWtHZoy0",
 )
-
 class InvoiceRequest(BaseModel):
     invoice_text: str
 
 @app.post("/extract")
 def extract(req: InvoiceRequest):
-
     prompt = f"""
-Extract these fields from the invoice.
+Extract the following fields from the invoice.
 
 Return ONLY valid JSON.
 
+Rules:
+- Always return all six keys.
+- If a value is missing, return null.
+- amount is the subtotal before tax.
+- tax is the tax amount only.
+- Copy the date exactly as it appears on the invoice.
+- Do NOT guess or reinterpret ambiguous dates.
+
 Schema:
 {{
-    "invoice_no": string|null,
-    "date": "YYYY-MM-DD"|null,
-    "vendor": string|null,
-    "amount": number|null,
-    "tax": number|null,
-    "currency": string|null
+  "invoice_no": null,
+  "date": null,
+  "vendor": null,
+  "amount": null,
+  "tax": null,
+  "currency": null
 }}
 
 Invoice:
@@ -46,7 +52,7 @@ Invoice:
 """
 
     response = client.chat.completions.create(
-        model="llama3.2:latest",
+        model="openai/gpt-4.1-nano",
         messages=[
             {
                 "role": "user",
@@ -57,7 +63,7 @@ Invoice:
     )
 
     text = response.choices[0].message.content
-
+    print(text)
     # Remove markdown fences if present
     text = text.replace("```json", "").replace("```", "").strip()
 
@@ -74,7 +80,18 @@ Invoice:
         }
 
     # Ensure all required keys exist
+    # Ensure all required keys exist
     for key in ["invoice_no", "date", "vendor", "amount", "tax", "currency"]:
         data.setdefault(key, None)
 
-    return data
+    # Normalize the date only if it exists
+        if data["date"]:
+            try:
+                data["date"] = parser.parse(
+                    data["date"],
+                    dayfirst=True
+                ).strftime("%Y-%m-%d")
+            except Exception:
+                pass
+
+        return data
