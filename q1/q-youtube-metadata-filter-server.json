@@ -1,0 +1,34 @@
+{
+  "source_urls": [
+    "https://www.youtube.com/watch?v=4P4UxXK7WE8",
+    "https://www.youtube.com/watch?v=1PkNiYlkkjo",
+    "https://www.youtube.com/watch?v=qbLc5a9jdXo",
+    "https://www.youtube.com/watch?v=FPkHecI3y_4",
+    "https://www.youtube.com/watch?v=HYV81L7qd6M",
+    "https://www.youtube.com/watch?v=Oh2Dkkswy30",
+    "https://www.youtube.com/watch?v=GfxJYp9_nJA",
+    "https://www.youtube.com/watch?v=K8L6KVGG-7o",
+    "https://www.youtube.com/watch?v=Gxpg9vvT8hE",
+    "https://www.youtube.com/watch?v=xwPWcFKeIac",
+    "https://www.youtube.com/watch?v=9N6a-VLBa2I",
+    "https://www.youtube.com/watch?v=9-vOd0UzHKY",
+    "https://www.youtube.com/watch?v=bTMPwUgLZf0",
+    "https://www.youtube.com/watch?v=NDFMa5FSQuI",
+    "https://www.youtube.com/watch?v=6tNS--WetLI",
+    "https://www.youtube.com/watch?v=FdVuKt_iuSI",
+    "https://www.youtube.com/watch?v=ByGJQzlzxQg",
+    "https://www.youtube.com/watch?v=lbY9r0rHTQc",
+    "https://www.youtube.com/watch?v=vuDCndpkutQ",
+    "https://www.youtube.com/watch?v=QnDWIZuWYW0"
+  ],
+  "min_duration_seconds": 300,
+  "max_duration_seconds": 2100,
+  "required_words": [
+    "python"
+  ],
+  "forbidden_words": [
+    "shorts",
+    "live"
+  ],
+  "limit": 8
+}
