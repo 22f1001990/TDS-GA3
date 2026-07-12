@@ -15,8 +15,8 @@ app.add_middleware(
 )
 
 client = OpenAI(
-    base_url="https://aipipe.org/openrouter/v1",
-    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzgyMjMyMCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDQyNzEyMH0.zKRT3j9j9gvM8Nw1GHkfqxeD2h4Cpw-qvC2RuMnogzc"
+    base_url="https://aipipe.org/openai/v1",
+    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzgyNTc4NCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDQzMDU4NH0.LIuZPdvPzClo9MctCoczziU71QHSlbH5eHwVpU8gEe4"
     )
 class InvoiceRequest(BaseModel):
     invoice_text: str   
