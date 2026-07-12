@@ -15,8 +15,11 @@ app.add_middleware(
 )
 
 client = OpenAI(
-    base_url="https://aipipe.org/openrouter/v1",
-    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzU5MjU1OCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDE5NzM1OH0.gMmdM6W_AXtuHpJzoXxSE5xZ34z9Ujfcnu7iWtHZoy0",
+    #base_url="https://aipipe.org/openrouter/v1",
+    #api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzU5MjU1OCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDE5NzM1OH0.gMmdM6W_AXtuHpJzoXxSE5xZ34z9Ujfcnu7iWtHZoy0",
+    base_url="https://aipipe.org/openai/v1",
+    api_key ="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzgzODEwNiwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDQ0MjkwNn0.qFEUam31KuyreTXQuVZP8JO9e-gvf0J0DIZ_l3KrRpQ"
+
 )
 
 
@@ -29,7 +32,8 @@ class Request(BaseModel):
 def answer(req: Request):
 
     response = client.chat.completions.create(
-        model="openai/gpt-4.1-nano",
+        #model="openai/gpt-4.1-nano",
+        model="gpt-4.1-nano",
         messages=[
             {
                 "role": "user",
