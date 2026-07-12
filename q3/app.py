@@ -16,9 +16,8 @@ app.add_middleware(
 
 client = OpenAI(
     base_url="https://aipipe.org/openrouter/v1",
-    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InlvZ2VzaC55ZW5hcmthckBnbWFpbC5jb20iLCJpYXQiOjE3ODM3ODIzNjcsImlzcyI6Imh0dHBzOi8vYWlwaXBlLm9yZyIsImF1ZCI6ImFpcGlwZS1hcGkiLCJleHAiOjE3ODQzODcxNjd9.4mu8NzadWp5ci0SkAUaWCyiD3teDgd3SUjnnltg3aEI"
-    #api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4MzU5MjU1OCwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDE5NzM1OH0.gMmdM6W_AXtuHpJzoXxSE5xZ34z9Ujfcnu7iWtHZoy0",
-)
+    api_key="eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6IjIyZjEwMDE5OTBAZHMuc3R1ZHkuaWl0bS5hYy5pbiIsImlhdCI6MTc4Mzc4ODIzMSwiaXNzIjoiaHR0cHM6Ly9haXBpcGUub3JnIiwiYXVkIjoiYWlwaXBlLWFwaSIsImV4cCI6MTc4NDM5MzAzMX0.1KsHShZ9N4nBAIah6rtVmnFdIXHN0uv-Q0s18ptyBKY"
+    )
 class InvoiceRequest(BaseModel):
     invoice_text: str   
 import re
